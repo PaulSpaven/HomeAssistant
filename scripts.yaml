@@ -1,0 +1,42 @@
+# Working as of 2025-02-27 with Home Assistant Version 2025.2.5
+# Created by Paul F. Spaven
+# MIT License
+pa_announcement_dinner:
+  alias: "PA Announcement - Dinner"
+  sequence:
+    - action: media_player.media_pause
+      data:
+        entity_id:
+          - media_player.basement
+          - media_player.family_room
+          - media_player.kitchen
+    - action: media_player.volume_set
+      data:
+        entity_id:
+          - media_player.basement
+          - media_player.family_room
+          - media_player.kitchen
+        volume_level: 0.2
+    - action: tts.speak
+      target:
+        entity_id: tts.google_translate_en_com
+      data:
+        media_player_entity_id:
+          - media_player.basement
+          - media_player.family_room
+          - media_player.kitchen
+        message: "Beautiful family, it is dinner time."
+    - delay: 00:00:05 # Wait for TTS to finish (adjust based on message length)
+    - action: media_player.volume_set
+      data:
+        entity_id:
+          - media_player.basement
+          - media_player.family_room
+          - media_player.kitchen
+        volume_level: 0.05
+    - action: media_player.media_play
+      data:
+        entity_id:
+          - media_player.basement
+          - media_player.family_room
+          - media_player.kitchen
