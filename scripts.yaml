@@ -1,5 +1,5 @@
 # Working as of 2025-02-27 with Home Assistant Version 2025.2.5
-# Created by Paul F. Spaven
+# Created by Paul F. Spaven with help from Grok 3 Beta
 # MIT License
 pa_announcement_dinner:
   alias: "PA Announcement - Dinner"
